@@ -25,6 +25,8 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Cart(0)</a></li>
+        <li><a href="/login">login</a></li>
+        <li><a href="/logout">logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
