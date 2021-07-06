@@ -1,5 +1,5 @@
-@extends('master')
-@section('content')
+<x-master/>
+<x-header/>
 <div class="container custom-product">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -33,4 +33,4 @@
         </a>
     </div>
 </div>
-@endsection
+<x-footer/>

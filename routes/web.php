@@ -19,6 +19,7 @@ Route::view("/login","login");
 Route::view("/signup","signup");
 
 Route::post("/login",[UserController::class,'login']);
+Route::post("/signup_form",[UserController::class,'signup']);
 Route::get("/",[ProductController::class,'index']);
 
 Route::get("/logout",function(){

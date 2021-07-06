@@ -8,25 +8,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">OLX@IITISM</a>
+      <a class="navbar-brand" href="/">OLX@IITISM</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class=""><a href="#">Home</a></li>
-        <li class=""><a href="#">Orders</a></li>
-      </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
       <ul class="nav navbar-nav navbar-right">
+      @if(@session()->has('user'))
+        <li class=""><a href="/">Upload Product</a></li>
         <li><a href="#">Cart(0)</a></li>
-        <li><a href="/login">login</a></li>
+        <li class=""><a href="#">My Profile</a></li>
         <li><a href="/logout">logout</a></li>
+      @else
+        <li class=""><a href="/">Products</a></li>
+        <li><a href="/login">login</a></li>
+        <li><a href="/signup">signup</a></li>
+      @endif
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
