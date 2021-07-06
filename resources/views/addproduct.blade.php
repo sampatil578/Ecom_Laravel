@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Product Description</label>
-                <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+                <textarea name="description" class="form-control" id="description" rows="3" placeholder="Enter Product Description"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Sign Up</button>
         </form>

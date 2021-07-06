@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\User;
+use DB;
 
 class ProductController extends Controller
 {
@@ -11,6 +13,12 @@ class ProductController extends Controller
     function index(){
         $data = Product::all();
         return view('product',['products'=>$data]);
+    }
+
+    function info($id){
+        $data = Product::select("*")->where("id", $id)->get()->first();
+        $owner = User::select("*")->where("email", $data->email)->get()->first();
+        return view('product_info',['info'=>$data,'owner'=>$owner]);
     }
 
     function signup(Request $req){

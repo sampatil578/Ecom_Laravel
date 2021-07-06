@@ -46,5 +46,31 @@
     height: 100%;
     width: 100%;
 }
+
+.info-image{
+    height : 400px;
+}
+
+.info-image img{
+    margin : 10% 0px;
+    height :80%;
+    width : 95%;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 </style>
 </html>

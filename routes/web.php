@@ -19,10 +19,12 @@ Route::view("/login","login");
 Route::view("/signup","signup");
 Route::view("/addproduct","addproduct");
 
+
 Route::post("/login",[UserController::class,'login']);
 Route::post("/signup_form",[UserController::class,'signup']);
 Route::post("/product_form",[ProductController::class,'signup']);
 Route::get("/",[ProductController::class,'index']);
+Route::get("/product_info/{id}",[ProductController::class,'info']);
 
 Route::get("/logout",function(){
     Session::forget('user');
