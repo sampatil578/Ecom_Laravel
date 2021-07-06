@@ -24,5 +24,27 @@
     height: 570px;
     padding-top : 30px;
 }
+
+.product-card{
+    height: 600px;
+    padding : 10px 2%;
+}
+
+.product-card div{
+    height: 50%;
+    width : 95%;
+}
+
+.product-card h2{
+    font-size : 20px;
+}
+.product-card h3{
+    font-size : 15px;
+}
+
+.product-card div img{
+    height: 100%;
+    width: 100%;
+}
 </style>
 </html>

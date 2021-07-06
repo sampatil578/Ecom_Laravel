@@ -15,9 +15,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
       @if(@session()->has('user'))
-        <li class=""><a href="/">Upload Product</a></li>
+        <li class=""><a href="/">Products</a></li>
+        <li><a href="/addproduct">Upload Product</a></li>
         <li><a href="#">Cart(0)</a></li>
-        <li class=""><a href="#">My Profile</a></li>
+        <li><a href="#">My Profile</a></li>
         <li><a href="/logout">logout</a></li>
       @else
         <li class=""><a href="/">Products</a></li>
