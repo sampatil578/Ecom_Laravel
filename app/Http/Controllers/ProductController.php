@@ -11,17 +11,27 @@ class ProductController extends Controller
 {
     //
     function index(){
-        $data = Product::all();
+        $data = Product::select("*")->where("email",'!=', session('user'))->get();
         return view('product',['products'=>$data]);
     }
 
+    function mypro(){
+        $data = Product::select("*")->where("email",'=', session('user'))->get();
+        return view('myproduct',['products'=>$data]);
+    }
+
     function info($id){
-        $data = Product::select("*")->where("id", $id)->get()->first();
+        $data = Product::select("*")->where("id",'=', $id)->get()->first();
         $owner = User::select("*")->where("email", $data->email)->get()->first();
         return view('product_info',['info'=>$data,'owner'=>$owner]);
     }
 
-    function signup(Request $req){
+    function hist($id){
+        $data = Product::select("*")->where("id",'=', $id)->get()->first();
+        return view('product_hist',['info'=>$data]);
+    }
+
+    function addpro(Request $req){
         $req->validate([
             'product' => 'required',
             'email'=>'required',

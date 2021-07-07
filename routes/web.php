@@ -22,9 +22,11 @@ Route::view("/addproduct","addproduct");
 
 Route::post("/login",[UserController::class,'login']);
 Route::post("/signup_form",[UserController::class,'signup']);
-Route::post("/product_form",[ProductController::class,'signup']);
+Route::post("/product_form",[ProductController::class,'addpro']);
 Route::get("/",[ProductController::class,'index']);
+Route::get("/myproducts",[ProductController::class,'mypro']);
 Route::get("/product_info/{id}",[ProductController::class,'info']);
+Route::get("/product_hist/{id}",[ProductController::class,'hist']);
 
 Route::get("/logout",function(){
     Session::forget('user');

@@ -10,8 +10,8 @@
             <h2>{{$item['product']}}</h3>
             <h3> Quantity : {{$item['quantity']}}</h3>
             <h2>Price: {{$item['price']}}/-</h3><br>
-            <form action="product_info/{{$item['id']}}">
-                <button class="btn btn-primary" type="submit">Read More</button>
+            <form action="product_hist/{{$item['id']}}">
+                <button class="btn btn-primary" type="submit">Show Product History</button>
             </form>&nbsp
         </div>
         @endforeach
