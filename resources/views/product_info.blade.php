@@ -36,7 +36,9 @@
                     <td>{{$info['description']}}</td>
                 </tr>
             </table><br><br>
-            <button class="btn btn-primary">Add To Cart</button>&nbsp
+            <form action="../addtocart/{{$info['id']}}">
+                <button class="btn btn-primary" type="submit">Add To Cart</button>
+            </form><br>
             <button class="btn btn-success">Buy Now</button>
         </div>
     </div>
