@@ -19,7 +19,7 @@
         <li><a href="/addproduct">Upload Product</a></li>
         <li><a href="/myproducts">My Products</a></li>
         <li><a href="#">My Orders</a></li>
-        <li><a href="/cart">Cart(0)</a></li>
+        <li><a href="/cart">Cart</a></li>
         <li><a href="#">My Profile</a></li>
         <li><a href="/logout">logout</a></li>
       @else
