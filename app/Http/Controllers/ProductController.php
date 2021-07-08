@@ -43,7 +43,7 @@ class ProductController extends Controller
         $order->pid = $req->id;
         $order->custemail = session('user');
         $order->owneremail = $data->email;
-        $order->quantity = $req->quantity;
+        $order->quantity_purchased = $req->quantity;
         $order->save();
         $product = Product::find($req->id);
         $product->quantity = $data->quantity-$req->quantity;

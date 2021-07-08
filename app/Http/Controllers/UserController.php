@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\order;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -47,6 +49,16 @@ class UserController extends Controller
     function profile($id){
         $user = User::select("*")->where("id",'=', $id)->get()->first();
         return view('profile',['user'=>$user]);
+    }
+
+    function myorders(){
+        $order = order::select("*")->where("custemail",'=', session('user'))->get();
+        $products = DB::table('orders')
+        ->join('users', 'users.email', '=', 'orders.owneremail')
+        ->join('products', 'products.id', '=', 'orders.pid')
+        ->where('orders.custemail', '=', session('user'))
+        ->get(['products.product','users.id','users.name','orders.quantity_purchased','products.price']);
+        return view('myorders',['order'=>$order,'product'=>$products]);
     }
 }
 

@@ -34,6 +34,7 @@ Route::get("/addtocart/{pid}",[ProductController::class,'addcart']);
 Route::get("/removefromcart/{id}",[ProductController::class,'deletecart']);
 Route::get("/profile/{id}",[UserController::class,'profile']);
 Route::get("/profile",[UserController::class,'userprofile']);
+Route::get("/myorders",[UserController::class,'myorders']);
 
 Route::get("/logout",function(){
     Session::forget('user');

@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->string('pid');
             $table->string('custemail');
             $table->string('owneremail');
-            $table->integer('quantity');
+            $table->integer('quantity_purchased');
             $table->timestamps();
         });
     }

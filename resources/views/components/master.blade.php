@@ -30,6 +30,11 @@
     padding-top : 50px;
 }
 
+.myorders{
+    height: auto;
+    padding : 50px 0px;
+}
+
 .product-card{
     height: 600px;
     padding : 10px 2%;

@@ -18,7 +18,7 @@
         <li class=""><a href="/">Products</a></li>
         <li><a href="/addproduct">Upload Product</a></li>
         <li><a href="/myproducts">My Products</a></li>
-        <li><a href="#">My Orders</a></li>
+        <li><a href="/myorders">My Orders</a></li>
         <li><a href="/cart">Cart</a></li>
         <li><a href="/profile">My Profile</a></li>
         <li><a href="/logout">logout</a></li>
