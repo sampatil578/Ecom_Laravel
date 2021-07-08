@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\cartproduct;
 use App\Models\User;
+use App\Models\order;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -25,6 +26,29 @@ class ProductController extends Controller
         $data = Product::select("*")->where("id",'=', $id)->get()->first();
         $owner = User::select("*")->where("email", $data->email)->get()->first();
         return view('product_info',['info'=>$data,'owner'=>$owner]);
+    }
+
+    function buyproduct($id){
+        $data = Product::select("*")->where("id",'=', $id)->get()->first();
+        $owner = User::select("*")->where("email", $data->email)->get()->first();
+        return view('buyproduct',['info'=>$data,'owner'=>$owner]);
+    }
+
+    function buy(Request $req){
+        $data = Product::select("*")->where("id",'=', $req->id)->get()->first();
+        $req->validate([
+            'quantity' => 'required|lte:q',
+        ]);
+        $order = new order;
+        $order->pid = $req->id;
+        $order->custemail = session('user');
+        $order->owneremail = $data->email;
+        $order->quantity = $req->quantity;
+        $order->save();
+        $product = Product::find($req->id);
+        $product->quantity = $data->quantity-$req->quantity;
+        $product->save();
+        return redirect('myorders');
     }
 
     function hist($id){

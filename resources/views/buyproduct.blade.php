@@ -36,11 +36,14 @@
                     <td>{{$info['description']}}</td>
                 </tr>
             </table><br><br>
-            <form action="../addtocart/{{$info['id']}}">
-                <button class="btn btn-primary" type="submit">Add To Cart</button>
-            </form>&nbsp
-            <form action="../buyproduct/{{$info['id']}}">
-                <button class="btn btn-success" type="submit">Buy Now</button>
+            <form action="../buy" method="POST">
+            @csrf
+                <div class="form-group col-sm-4">
+                    <input type="number" name="quantity" class="form-control"  placeholder="Enter Required Quantity">
+                    <input type="hidden" name="id" class="form-control"  placeholder="Enter Required Quantity" value="{{$info['id']}}">
+                    <input type="hidden" name="q" class="form-control" value="{{$info['quantity']}}">
+                </div>
+                <button type="submit" class="btn btn-primary">Buy Now</button>
             </form>
         </div>
     </div>
