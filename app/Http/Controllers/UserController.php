@@ -38,5 +38,15 @@ class UserController extends Controller
         $user->save();
         return redirect('login');
     }
+
+    function userprofile(){
+        $user = User::select("*")->where("email",'=', session('user'))->get()->first();
+        return view('profile',['user'=>$user]);
+    }
+
+    function profile($id){
+        $user = User::select("*")->where("id",'=', $id)->get()->first();
+        return view('profile',['user'=>$user]);
+    }
 }
 

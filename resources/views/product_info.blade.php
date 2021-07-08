@@ -13,7 +13,7 @@
                 </tr>
                 <tr>
                     <td>Owner name </td>
-                    <td>{{$owner['name']}}</td>
+                    <td>{{$owner['name']}} (<a href="../profile/{{$owner['id']}}">Profile</a>)</td>
                 </tr>
                 <tr>
                     <td>Contact</td>

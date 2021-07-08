@@ -30,6 +30,8 @@ Route::get("/product_info/{id}",[ProductController::class,'info']);
 Route::get("/product_hist/{id}",[ProductController::class,'hist']);
 Route::get("/addtocart/{pid}",[ProductController::class,'addcart']);
 Route::get("/removefromcart/{id}",[ProductController::class,'deletecart']);
+Route::get("/profile/{id}",[UserController::class,'profile']);
+Route::get("/profile",[UserController::class,'userprofile']);
 
 Route::get("/logout",function(){
     Session::forget('user');

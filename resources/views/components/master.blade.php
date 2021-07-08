@@ -25,6 +25,11 @@
     padding-top : 30px;
 }
 
+.profile{
+    height: 300px;
+    padding-top : 50px;
+}
+
 .product-card{
     height: 600px;
     padding : 10px 2%;

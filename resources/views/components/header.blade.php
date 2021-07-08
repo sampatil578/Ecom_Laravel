@@ -20,7 +20,7 @@
         <li><a href="/myproducts">My Products</a></li>
         <li><a href="#">My Orders</a></li>
         <li><a href="/cart">Cart</a></li>
-        <li><a href="#">My Profile</a></li>
+        <li><a href="/profile">My Profile</a></li>
         <li><a href="/logout">logout</a></li>
       @else
         <li class=""><a href="/">Products</a></li>
