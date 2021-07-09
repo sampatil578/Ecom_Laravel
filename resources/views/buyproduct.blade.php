@@ -36,12 +36,13 @@
                     <td>{{$info['description']}}</td>
                 </tr>
             </table><br><br>
-            <form action="../buy" method="POST">
+            <form action="{{route('paytm.payment')}}" method="POST">
             @csrf
                 <div class="form-group col-sm-4">
                     <input type="number" name="quantity" class="form-control"  placeholder="Enter Required Quantity">
                     <input type="hidden" name="id" class="form-control"  placeholder="Enter Required Quantity" value="{{$info['id']}}">
                     <input type="hidden" name="q" class="form-control" value="{{$info['quantity']}}">
+                    <input type="hidden" name="price" class="form-control" value="{{$info['price']}}">
                 </div>
                 <button type="submit" class="btn btn-primary">Buy Now</button>
             </form>

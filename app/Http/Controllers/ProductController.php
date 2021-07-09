@@ -8,6 +8,8 @@ use App\Models\cartproduct;
 use App\Models\User;
 use App\Models\order;
 use Illuminate\Support\Facades\DB;
+use PaytmWallet;
+use Session;
 
 class ProductController extends Controller
 {
@@ -108,4 +110,56 @@ class ProductController extends Controller
         return redirect('login');
     }
 
+    public function paytmPayment(Request $req)
+    {
+        $req->validate([
+            'quantity' => 'required|lte:q',
+        ]);
+        $a = $req->input();
+        $req->session()->put('order',$a);
+        $payment = PaytmWallet::with('receive');
+        $payment->prepare([
+          'order' => rand(),
+          'user' => rand(10,1000),
+          'mobile_number' => '123456789',
+          'email' => 'paytmtest@gmail.com',
+          'amount' => ($req->price)*($req->quantity),
+          'callback_url' => route('paytm.callback'),
+        ]);
+        return $payment->receive();
+    }
+
+    public function paytmCallback()
+    {
+        $transaction = PaytmWallet::with('receive');
+        
+        $response = $transaction->response(); // To get raw response as array
+        //Check out response parameters sent by paytm here -> http://paywithpaytm.com/developer/paytm_api_doc?target=interpreting-response-sent-by-paytm
+        
+        if($transaction->isSuccessful()){
+            $a = session('order');
+            Session::forget('order');
+            $data = Product::select("*")->where("id",'=', $a['id'])->get()->first();
+            $order = new order;
+            $order->pid = $a['id'];
+            $order->custemail = session('user');
+            $order->owneremail = $data->email;
+            $order->quantity_purchased = $a['quantity'];
+            $order->save();
+            $product = Product::find($a['id']);
+            $product->quantity = $data->quantity-$a['quantity'];
+            $product->save();
+            return redirect('myorders');
+        }else if($transaction->isFailed()){
+          //Transaction Failed
+          return view('paytm.paytm-fail');
+        }else if($transaction->isOpen()){
+          //Transaction Open/Processing
+          return view('paytm.paytm-fail');
+        }
+        $transaction->getResponseMessage(); //Get Response Message If Available
+        //get important parameters via public methods
+        $transaction->getOrderId(); // Get order id
+        $transaction->getTransactionId(); // Get transaction id
+    }
 }

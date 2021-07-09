@@ -35,6 +35,8 @@ Route::get("/removefromcart/{id}",[ProductController::class,'deletecart']);
 Route::get("/profile/{id}",[UserController::class,'profile']);
 Route::get("/profile",[UserController::class,'userprofile']);
 Route::get("/myorders",[UserController::class,'myorders']);
+Route::post('paytm-payment',[ProductController::Class, 'paytmPayment'])->name('paytm.payment');
+Route::post('paytm-callback',[ProductController::Class, 'paytmCallback'])->name('paytm.callback');
 
 Route::get("/logout",function(){
     Session::forget('user');
